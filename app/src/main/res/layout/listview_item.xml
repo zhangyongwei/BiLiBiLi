@@ -47,8 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2"
-        android:background="#11000000"
-        android:verticalSpacing="10dp"></com.yongweizhang.bilibili.view.MyGridView>
+        android:background="#11000000"></com.yongweizhang.bilibili.view.MyGridView>
 
     <LinearLayout
     android:paddingTop="10dp"
