@@ -56,7 +56,7 @@ public class DongTaiAdapter extends RecyclerView.Adapter {
 
         if (viewType == WINER) {
 
-            return new WinerViewHolder(mContext, inflater.inflate(R.layout.grid_dt, null));
+            return new WinerViewHolder(mContext, inflater.inflate(R.layout.grid_dt,null));
         }
 
         return null;

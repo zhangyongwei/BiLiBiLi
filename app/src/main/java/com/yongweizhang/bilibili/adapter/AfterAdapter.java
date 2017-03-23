@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yongweizhang.bilibili.R;
@@ -116,7 +117,7 @@ public class AfterAdapter extends RecyclerView.Adapter {
 
         public void setData(List<AfterBean.ResultBean.SerializingBean> serializing) {
             //设置适配器
-            adapter = new CartonAdapter(mContext,serializing);
+            adapter = new CartonAdapter(mContext, serializing);
             gvCarton.setAdapter(adapter);
         }
     }
@@ -124,7 +125,16 @@ public class AfterAdapter extends RecyclerView.Adapter {
     class GridviewViewHolder extends RecyclerView.ViewHolder {
 
         private final Context mContext;
-
+        @InjectView(R.id.iv_jp)
+        ImageView ivJp;
+        @InjectView(R.id.iv_cn)
+        ImageView ivCn;
+        @InjectView(R.id.iv_time)
+        LinearLayout ivTime;
+        @InjectView(R.id.iv_index)
+        LinearLayout ivIndex;
+        @InjectView(R.id.ll_bg)
+        LinearLayout llBg;
         @InjectView(R.id.iv_random)
         ImageView ivRandom;
         @InjectView(R.id.tv_name)

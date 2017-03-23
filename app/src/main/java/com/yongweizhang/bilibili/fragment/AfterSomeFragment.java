@@ -4,8 +4,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.alibaba.fastjson.JSON;
 import com.yongweizhang.bilibili.R;
@@ -25,16 +23,6 @@ import okhttp3.Call;
 public class AfterSomeFragment extends BaseFragment {
 
 
-    @InjectView(R.id.iv_jp)
-    ImageView ivJp;
-    @InjectView(R.id.iv_cn)
-    ImageView ivCn;
-    @InjectView(R.id.iv_time)
-    LinearLayout ivTime;
-    @InjectView(R.id.iv_index)
-    LinearLayout ivIndex;
-    @InjectView(R.id.ll_bg)
-    LinearLayout llBg;
     @InjectView(R.id.rv_after)
     RecyclerView rvAfter;
     private AfterAdapter adapter;
@@ -85,12 +73,11 @@ public class AfterSomeFragment extends BaseFragment {
         rvAfter.setAdapter(adapter);
 
 
-        GridLayoutManager manager = new GridLayoutManager(mContext,1);
+        GridLayoutManager manager = new GridLayoutManager(mContext, 1);
 
         rvAfter.setLayoutManager(manager);
 
     }
-
 
 
     @Override
@@ -98,4 +85,6 @@ public class AfterSomeFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
+
+
 }
