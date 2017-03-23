@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#8FFF"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/search_home_shape"
+                android:drawableLeft="@drawable/home_search_icon"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:drawableRight="@drawable/scan"
+                android:text="搜索视频、番剧、up主或av号"
+                android:textSize="13dp"/>
+        </LinearLayout>
+
+
+        <com.github.hymanme.tagflowlayout.TagFlowLayout
+            android:id="@+id/tag_flow_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:expandHint="查看更多"
+            app:foldHint="点击缩回"/>
+
+        <LinearLayout
+            android:id="@+id/ll_like"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:layout_height="37dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_group"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="兴趣圈"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:id="@+id/ll_center"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:layout_height="37dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_header_topic_center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="话题中心"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:id="@+id/ll_activity"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:layout_height="37dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_header_activity_center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="活动中心"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:id="@+id/ll_balckhome"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:layout_height="37dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_header_black_list_center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="小黑屋"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_rank"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:layout_height="37dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_btn_rank_original"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="原创排行榜"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:id="@+id/ll_all"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:layout_height="37dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_btn_rank_all"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="全区排行榜"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_game"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:background="#ffffff"
+            android:layout_height="37dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_btn_game"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="游戏中心"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:id="@+id/ll_shop"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:layout_height="37dp">
+
+            <ImageView
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:paddingLeft="8dp"
+                android:src="@drawable/ic_btn_shop"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="周边商城"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</android.support.v4.widget.NestedScrollView>

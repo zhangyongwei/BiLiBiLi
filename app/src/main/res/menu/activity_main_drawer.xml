@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/it_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="首页" />
+        <item
+            android:id="@+id/it_member"
+            android:icon="@drawable/ic_nav_vip"
+            android:title="我的大会员" />
+        <item
+            android:id="@+id/it_memberpoints"
+            android:icon="@drawable/ic_nav_point"
+            android:title="会员积分" />
+        <item
+            android:id="@+id/it_cache"
+            android:icon="@drawable/ic_download_grey_24dp"
+            android:title="离线缓存" />
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/line">
+        <item
+            android:id="@+id/it_laterlook"
+            android:icon="@drawable/ic_view_later_24dp"
+            android:title="稍后再看" />
+        <item
+            android:id="@+id/it_collect"
+            android:icon="@drawable/ic_answer_favorite"
+            android:title="我的收藏" />
+        <item
+            android:id="@+id/it_history"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="历史记录" />
+        <item
+            android:id="@+id/it_like"
+            android:icon="@drawable/ic_people_black_24dp"
+            android:title="我的关注" />
+        <item
+            android:id="@+id/it_wallet"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:title="B币钱包" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/it_selector"
+            android:icon="@drawable/ic_color_lens_black_24dp"
+            android:title="主题选择" />
+        <item
+            android:id="@+id/it_help"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="设置与帮助" />
+
+    </group>
+
+
+</menu>

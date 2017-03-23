@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+    <ImageView
+    android:id="@+id/iv_random"
+    android:layout_gravity="center"
+    android:layout_width="35dp"
+    android:layout_height="35dp"
+    android:paddingLeft="10dp"
+    android:src="@drawable/ic_header_new"/>
+
+    <TextView
+    android:id="@+id/tv_name"
+    android:paddingLeft="5dp"
+    android:layout_gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="手游直播"/>
+
+    <TextView
+    android:id="@+id/tv_num"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:paddingLeft="130dp"
+    android:text="当前200个直播"
+        android:singleLine="true" />
+
+     <ImageView
+         android:id="@+id/iv_right"
+         android:layout_width="30dp"
+         android:layout_height="30dp"
+         android:layout_gravity="center"
+         android:src="@drawable/ic_chevron_right"/>
+    </LinearLayout>
+
+    <com.yongweizhang.bilibili.view.MyGridView
+        android:id="@+id/gv_recommend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        android:background="#11000000"
+        android:verticalSpacing="10dp"></com.yongweizhang.bilibili.view.MyGridView>
+
+    <LinearLayout
+    android:paddingTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+    <Button
+    android:id="@+id/btn_more"
+    android:layout_width="wrap_content"
+    android:layout_height="38dp"
+    android:layout_gravity="center"
+    android:layout_marginLeft="15dp"
+    android:background="#ffffff"
+    android:text="查看更多"/>
+
+    <TextView
+    android:id="@+id/tv_refresh"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="90dp"
+    android:layout_gravity="center"
+    android:text="1122条更新"
+    android:singleLine="true"
+    android:drawableRight="@drawable/ic_refresh_pink"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
