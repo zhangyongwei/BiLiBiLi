@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.yongweizhang.bilibili.R;
-import com.yongweizhang.bilibili.bean.ZongHeBean;
+import com.yongweizhang.bilibili.bean.AfterBean;
 
 import java.util.List;
 
@@ -22,14 +22,15 @@ import butterknife.InjectView;
  * Created by 张永卫on 2017/3/23.
  */
 
-public class DongGridAdapter extends BaseAdapter {
+public class HeadAdapter extends BaseAdapter {
 
     private final Context mContext;
-    private final List<ZongHeBean.DataBean> data;
+    private final List<AfterBean.ResultBean.AdBean.HeadBean> data;
 
-    public DongGridAdapter(Context mContext, List<ZongHeBean.DataBean> datas) {
+    public HeadAdapter(Context mContext, List<AfterBean.ResultBean.AdBean.HeadBean> head) {
+
         this.mContext = mContext;
-        this.data = datas;
+        this.data = head;
     }
 
     @Override
@@ -52,25 +53,23 @@ public class DongGridAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (convertView == null) {
 
-            convertView = View.inflate(mContext, R.layout.dongtai_grid, null);
+            convertView = View.inflate(mContext, R.layout.head_item, null);
+
             viewHolder = new ViewHolder(convertView);
 
             convertView.setTag(viewHolder);
-
         }else{
 
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ZongHeBean.DataBean dataBean = data.get(position);
+        AfterBean.ResultBean.AdBean.HeadBean headBean = data.get(position);
 
-        viewHolder.tvContent.setText(dataBean.getTitle());
+        viewHolder.tvContent.setText(headBean.getTitle());
 
-        viewHolder.tvType.setText(dataBean.getTname());
+        Glide.with(mContext).load(headBean.getImg()).into(viewHolder.ivDefault);
 
-        Glide.with(mContext).load(dataBean.getCover()).into(viewHolder.ivDefault);
-
-        viewHolder.itemCard.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemLiveLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mContext, "被点击了", Toast.LENGTH_SHORT).show();
@@ -86,10 +85,8 @@ public class DongGridAdapter extends BaseAdapter {
         TextView tvContent;
         @InjectView(R.id.tv_type)
         TextView tvType;
-        @InjectView(R.id.iv_dian)
-        ImageView ivDian;
-        @InjectView(R.id.item_card)
-        CardView itemCard;
+        @InjectView(R.id.item_live_layout)
+        CardView itemLiveLayout;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

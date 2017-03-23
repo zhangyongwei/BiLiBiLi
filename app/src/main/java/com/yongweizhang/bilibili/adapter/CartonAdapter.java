@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.yongweizhang.bilibili.R;
-import com.yongweizhang.bilibili.bean.ZongHeBean;
+import com.yongweizhang.bilibili.bean.AfterBean;
 
 import java.util.List;
 
@@ -22,14 +22,14 @@ import butterknife.InjectView;
  * Created by 张永卫on 2017/3/23.
  */
 
-public class DongGridAdapter extends BaseAdapter {
+public class CartonAdapter extends BaseAdapter {
 
     private final Context mContext;
-    private final List<ZongHeBean.DataBean> data;
+    private final List<AfterBean.ResultBean.SerializingBean> data;
 
-    public DongGridAdapter(Context mContext, List<ZongHeBean.DataBean> datas) {
+    public CartonAdapter(Context mContext, List<AfterBean.ResultBean.SerializingBean> serializing) {
         this.mContext = mContext;
-        this.data = datas;
+        this.data = serializing;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class DongGridAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (convertView == null) {
 
-            convertView = View.inflate(mContext, R.layout.dongtai_grid, null);
+            convertView = View.inflate(mContext, R.layout.carton_item, null);
             viewHolder = new ViewHolder(convertView);
 
             convertView.setTag(viewHolder);
@@ -62,17 +62,17 @@ public class DongGridAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        ZongHeBean.DataBean dataBean = data.get(position);
 
-        viewHolder.tvContent.setText(dataBean.getTitle());
+        AfterBean.ResultBean.SerializingBean serializingBean = data.get(position);
 
-        viewHolder.tvType.setText(dataBean.getTname());
+        viewHolder.tvContent.setText(serializingBean.getTitle());
 
-        Glide.with(mContext).load(dataBean.getCover()).into(viewHolder.ivDefault);
+        Glide.with(mContext).load(serializingBean.getCover()).into(viewHolder.ivDefault);
 
-        viewHolder.itemCard.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemCardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(mContext, "被点击了", Toast.LENGTH_SHORT).show();
             }
         });
@@ -84,12 +84,8 @@ public class DongGridAdapter extends BaseAdapter {
         ImageView ivDefault;
         @InjectView(R.id.tv_content)
         TextView tvContent;
-        @InjectView(R.id.tv_type)
-        TextView tvType;
-        @InjectView(R.id.iv_dian)
-        ImageView ivDian;
-        @InjectView(R.id.item_card)
-        CardView itemCard;
+        @InjectView(R.id.item_cardview)
+        CardView itemCardview;
 
         ViewHolder(View view) {
             ButterKnife.inject(this, view);

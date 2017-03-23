@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.yongweizhang.bilibili.R;
@@ -67,6 +68,14 @@ public class ZongGridAdapter extends BaseAdapter {
         viewHolder.tvType.setText(dataBean.getTname());
 
         Glide.with(mContext).load(dataBean.getCover()).into(viewHolder.ivDefault);
+
+        viewHolder.itemLiveLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "被点击了", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return convertView;
     }
 
