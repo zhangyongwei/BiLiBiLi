@@ -38,7 +38,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -53,7 +53,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.LiveInfoActivity"></activity>
+        <activity android:name=".activity.LiveInfoActivity" />
+        <activity android:name=".activity.TopicActivity" />
+        <activity android:name=".activity.TopicWebActivity" />
+        <activity android:name=".activity.RankActivity"></activity>
     </application>
 
 </manifest>

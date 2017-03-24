@@ -8,7 +8,7 @@
     android:layout_marginRight="5dp"
     android:background="#11ffffff">
     <android.support.v7.widget.CardView
-        android:id="@+id/item_cardview"
+        android:id="@+id/item_live_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -19,14 +19,15 @@
         app:cardElevation="3dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center">
 
             <ImageView
+                android:layout_marginTop="3dp"
                 android:id="@+id/iv_default"
-                android:layout_width="110dp"
+                android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/new_img_loading_1"/>
@@ -41,6 +42,36 @@
                 android:text="我爱石家庄"
                 android:textColor="#000"
                 android:textSize="12sp"/>
+
+
+            <LinearLayout
+                android:paddingTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="天蚕"
+                    android:paddingLeft="3dp"
+                    android:gravity="center"
+                    android:textColor="#000"
+                    android:paddingBottom="5dp"
+                    android:drawableLeft="@drawable/ic_info_views_large"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/tv_danmu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:text="xx"
+                    android:drawableLeft="@drawable/ic_info_danmakus_large"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:layout_margin="3dp"
         android:clickable="true"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="3dp"
         app:cardBackgroundColor="#33ffffff"
         app:cardElevation="3dp">
 
@@ -28,7 +28,7 @@
                 android:id="@+id/iv_default"
                 android:layout_width="110dp"
                 android:layout_height="160dp"
-                android:scaleType="center"
+                android:scaleType="centerCrop"
                 android:src="@drawable/new_img_loading_1"/>
 
             <TextView

@@ -1,5 +1,6 @@
 package com.yongweizhang.bilibili.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import com.github.hymanme.tagflowlayout.TagFlowLayout;
 import com.github.hymanme.tagflowlayout.tags.ColorfulTagView;
 import com.github.hymanme.tagflowlayout.tags.DefaultTagView;
 import com.yongweizhang.bilibili.R;
+import com.yongweizhang.bilibili.activity.RankActivity;
+import com.yongweizhang.bilibili.activity.TopicActivity;
 import com.yongweizhang.bilibili.bean.FoundBean;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -54,6 +57,7 @@ public class CommunityFragment extends BaseFragment {
     LinearLayout llGame;
     @InjectView(R.id.ll_shop)
     LinearLayout llShop;
+    private Intent intent;
 
     @Override
     public View initView() {
@@ -145,20 +149,23 @@ public class CommunityFragment extends BaseFragment {
 
                 break;
             case R.id.ll_center:
-                Toast.makeText(mContext, "中心", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(mContext, "话题中心", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext, TopicActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.ll_activity:
-                Toast.makeText(mContext, "活动", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(mContext, "活动中心", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext, TopicActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.ll_balckhome:
                 Toast.makeText(mContext, "小黑屋", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.ll_rank:
-                Toast.makeText(mContext, "原创", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(mContext, "原创", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext, RankActivity.class);
+                startActivity(intent);
                 break;
             case R.id.ll_all:
                 Toast.makeText(mContext, "全部", Toast.LENGTH_SHORT).show();
