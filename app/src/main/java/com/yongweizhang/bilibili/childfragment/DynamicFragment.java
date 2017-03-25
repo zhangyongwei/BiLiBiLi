@@ -1,5 +1,7 @@
 package com.yongweizhang.bilibili.childfragment;
 
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,6 +27,8 @@ public class DynamicFragment extends BaseFragment {
 
     @InjectView(R.id.rv_dt)
     RecyclerView rvDt;
+    @InjectView(R.id.mySwipeRefreshLayout)
+    SwipeRefreshLayout mySwipeRefreshLayout;
     private DongTaiAdapter adapter;
 
     @Override
@@ -32,7 +36,41 @@ public class DynamicFragment extends BaseFragment {
 
         View view = View.inflate(mContext, R.layout.fragment_dongtai, null);
         ButterKnife.inject(this, view);
+
+        onRefresh();
         return view;
+    }
+
+    private void onRefresh() {
+        //设置下拉出现小圆圈是否是缩放出现，出现的位置，最大的下拉位置
+        mySwipeRefreshLayout.setProgressViewOffset(true, 50, 200);
+
+        //设置下拉圆圈的大小，两个值 LARGE， DEFAULT
+        mySwipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
+
+        // 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
+        mySwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_red_light);
+
+        initListener();
+    }
+
+    private void initListener() {
+        mySwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 刷新动画开始后回调到此方法
+                                getDataFromNet();
+                            }
+                        }, 2000);
+
+                    }
+                }
+        );
     }
 
     @Override
@@ -42,6 +80,7 @@ public class DynamicFragment extends BaseFragment {
     }
 
     String url = "http://app.bilibili.com/x/feed/index?appkey=1d8b6e7d45233436&build=501000&idx=1490013261&mobi_app=android&network=wifi&platform=android&pull=true&style=2&ts=1490015599000&sign=af4edc66aef7e443c98c28de2b660aa4";
+
     private void getDataFromNet() {
 
         OkHttpUtils.get()
@@ -58,6 +97,8 @@ public class DynamicFragment extends BaseFragment {
                         Log.e("TAG", "联网成功" + response);
 
                         processData(response);
+
+                        mySwipeRefreshLayout.setRefreshing(false);
                     }
                 });
     }
@@ -67,11 +108,11 @@ public class DynamicFragment extends BaseFragment {
         ZongHeBean zongHeBean = JSON.parseObject(json, ZongHeBean.class);
 
         //设置RecyclerView的适配器
-        adapter = new DongTaiAdapter(mContext,zongHeBean.getData());
+        adapter = new DongTaiAdapter(mContext, zongHeBean.getData());
 
         rvDt.setAdapter(adapter);
 
-        GridLayoutManager manager = new GridLayoutManager(mContext,1);
+        GridLayoutManager manager = new GridLayoutManager(mContext, 1);
 
         rvDt.setLayoutManager(manager);
 
@@ -84,4 +125,6 @@ public class DynamicFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
+
+
 }

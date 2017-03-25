@@ -35,7 +35,7 @@ public class HeadAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return data.size();
+        return 3;
     }
 
     @Override

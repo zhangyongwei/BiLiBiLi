@@ -42,13 +42,14 @@ public class HomeFragment extends BaseFragment {
     ViewPager viewPager;
     @InjectView(R.id.fab)
     FloatingActionButton fab;
+//    @InjectView(R.id.mySwipeRefreshLayout)
+//    SwipeRefreshLayout mySwipeRefreshLayout;
     private HomeViewPagerAdapter adapter;
     private ArrayList<BaseFragment> fragments;
 
     @Override
     public View initView() {
         View view = View.inflate(mContext, R.layout.fragment_home, null);
-
         ButterKnife.inject(this, view);
         return view;
     }
@@ -67,7 +68,37 @@ public class HomeFragment extends BaseFragment {
         tablayout.setupWithViewPager(viewPager);
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
+//        //设置下拉出现小圆圈是否是缩放出现，出现的位置，最大的下拉位置
+//        mySwipeRefreshLayout.setProgressViewOffset(true, 50, 200);
+//
+//        //设置下拉圆圈的大小，两个值 LARGE， DEFAULT
+//        mySwipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
+//
+//        // 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
+//        mySwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_red_light);
+//
+//        iniListener();
+
     }
+
+//    private void iniListener() {
+//
+//        mySwipeRefreshLayout.setOnRefreshListener(
+//                new SwipeRefreshLayout.OnRefreshListener() {
+//                    @Override
+//                    public void onRefresh() {
+//                        // 刷新动画开始后回调到此方法
+//                        new Handler().postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//
+//
+//                            }
+//                        }, 2000);
+//                    }
+//                }
+//        );
+//    }
 
 
     private void initFragment() {
@@ -111,6 +142,7 @@ public class HomeFragment extends BaseFragment {
                 break;
         }
     }
+
 
 
 }

@@ -145,8 +145,9 @@ public class CommunityFragment extends BaseFragment {
                 Toast.makeText(mContext, "搜索", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ll_like:
-                Toast.makeText(mContext, "爱好", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(mContext, "爱好", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext, TopicActivity.class);
+                mContext.startActivity(intent);
                 break;
             case R.id.ll_center:
 //                Toast.makeText(mContext, "话题中心", Toast.LENGTH_SHORT).show();
@@ -168,8 +169,9 @@ public class CommunityFragment extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.ll_all:
-                Toast.makeText(mContext, "全部", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(mContext, "全部", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext, RankActivity.class);
+                startActivity(intent);
                 break;
             case R.id.ll_game:
                 Toast.makeText(mContext, "游戏", Toast.LENGTH_SHORT).show();

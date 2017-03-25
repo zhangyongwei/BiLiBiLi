@@ -3,8 +3,10 @@ package com.yongweizhang.bilibili.activity;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.adapter.RankAdapter;
@@ -39,10 +41,6 @@ public class RankActivity extends BaseActivity {
     private RankAdapter adapter;
 
 
-    @Override
-    public void initListener() {
-
-    }
 
     @Override
     public void initData() {
@@ -65,6 +63,30 @@ public class RankActivity extends BaseActivity {
         fragments.add(new YuanChauangFragment());
         fragments.add(new QuanZhanFragment());
         fragments.add(new FanJuFragment());
+    }
+    @Override
+    public void initListener() {
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        ivDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RankActivity.this, "下载更多", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ivSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RankActivity.this, "搜索", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

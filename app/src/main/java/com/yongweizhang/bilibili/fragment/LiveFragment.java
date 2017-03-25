@@ -1,5 +1,7 @@
 package com.yongweizhang.bilibili.fragment;
 
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,21 +27,63 @@ public class LiveFragment extends BaseFragment {
 
     @InjectView(R.id.rv_home)
     RecyclerView rvHome;
+    @InjectView(R.id.mySwipeRefreshLayout)
+    SwipeRefreshLayout mySwipeRefreshLayout;
+
 
     private LiveAdapter adapter;
+
 
     @Override
     public View initView() {
 
         View view = View.inflate(getActivity(), R.layout.fragment_live, null);
         ButterKnife.inject(this, view);
+
+        initRefch();
+
         return view;
+    }
+
+    private void initRefch() {
+        //设置下拉出现小圆圈是否是缩放出现，出现的位置，最大的下拉位置
+        mySwipeRefreshLayout.setProgressViewOffset(true, 50, 200);
+
+        //设置下拉圆圈的大小，两个值 LARGE， DEFAULT
+        mySwipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
+
+        // 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
+        mySwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_red_light);
+
+        initListener();
     }
 
     @Override
     public void initData() {
         super.initData();
+
+
         getDataFromNet();
+    }
+
+    private void initListener() {
+
+        mySwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 刷新动画开始后回调到此方法
+                                getDataFromNet();
+                            }
+                        }, 2000);
+
+                    }
+                }
+        );
     }
 
     private void getDataFromNet() {
@@ -57,9 +101,12 @@ public class LiveFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.e("TAG", "联网成功" + response);
+                        Log.e("TAG", "联网成功123123123123123" + response);
 
                         processData(response);
+
+//                        // 通过 setEnabled(false) 禁用下拉刷新
+                        mySwipeRefreshLayout.setRefreshing(false);
                     }
                 });
     }
@@ -70,11 +117,11 @@ public class LiveFragment extends BaseFragment {
 //        homeBean.getData().getBanner().get(0).getImg();
 
         //设置RecyclerView的适配器
-        adapter = new LiveAdapter(mContext,homeBean.getData());
+        adapter = new LiveAdapter(mContext, homeBean.getData());
 
         rvHome.setAdapter(adapter);
 
-        GridLayoutManager manager = new GridLayoutManager(mContext,1);
+        GridLayoutManager manager = new GridLayoutManager(mContext, 1);
 
         rvHome.setLayoutManager(manager);
     }
@@ -84,4 +131,7 @@ public class LiveFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
+
+
+
 }

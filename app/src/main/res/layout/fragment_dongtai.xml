@@ -9,10 +9,15 @@
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_dt"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/mySwipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="600dp" />
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_dt"
+                android:layout_width="match_parent"
+                android:layout_height="600dp" />
+        </android.support.v4.widget.SwipeRefreshLayout>
     </RelativeLayout>
 
 
