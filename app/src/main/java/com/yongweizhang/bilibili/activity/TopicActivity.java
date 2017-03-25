@@ -4,12 +4,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.adapter.TopicAdapter;
 import com.yongweizhang.bilibili.bean.TopicBean;
-import com.yongweizhang.bilibili.view.MyGridView;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -21,7 +21,7 @@ public class TopicActivity extends BaseActivity {
     @InjectView(R.id.iv_back)
     ImageView ivBack;
     @InjectView(R.id.lv_list)
-    MyGridView lvList;
+    ListView lvList;
     @InjectView(R.id.activity_topic)
     LinearLayout activityTopic;
 

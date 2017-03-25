@@ -32,13 +32,17 @@
 
     </LinearLayout>
 
-
-    <com.yongweizhang.bilibili.view.MyGridView
+    <ListView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="1">
+        android:layout_height="wrap_content"></ListView>
 
-    </com.yongweizhang.bilibili.view.MyGridView>
+    <!--<com.yongweizhang.bilibili.view.MyGridView-->
+        <!--android:id="@+id/lv_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:numColumns="1">-->
+
+    <!--</com.yongweizhang.bilibili.view.MyGridView>-->
 
 </LinearLayout>

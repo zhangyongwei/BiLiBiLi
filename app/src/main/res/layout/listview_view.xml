@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_item"
+            android:orientation="vertical"
+            android:layout_width="35dp"
+            android:paddingTop="5dp"
+           android:gravity="center"
+            android:layout_height="80dp">
+
+            <TextView
+                android:id="@+id/tv_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:paddingLeft="5dp"
+                android:text="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_mm"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:paddingTop="5dp"
+            android:layout_height="80dp">
+
+            <ImageView
+                android:id="@+id/iv_tup"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:src="@drawable/bangumi_home_login_guide"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:paddingLeft="3dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_titlee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:text="我吃西红柿"/>
+
+                <TextView
+                    android:id="@+id/tv_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/ic_lv0"
+                    android:text="我吃西红柿"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_zh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:text="综合评分:"/>
+                    <TextView
+                        android:id="@+id/tv_fen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:text="45675"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+</LinearLayout>
