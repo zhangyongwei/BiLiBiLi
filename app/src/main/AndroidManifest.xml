@@ -56,7 +56,11 @@
         <activity android:name=".activity.LiveInfoActivity" />
         <activity android:name=".activity.TopicActivity" />
         <activity android:name=".activity.TopicWebActivity" />
-        <activity android:name=".activity.RankActivity"></activity>
+        <activity android:name=".activity.RankActivity" />
+        <activity android:name=".activity.GuanZhuActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.RegistActivity" />
+        <activity android:name=".activity.DownloadActivity"></activity>
     </application>
 
 </manifest>

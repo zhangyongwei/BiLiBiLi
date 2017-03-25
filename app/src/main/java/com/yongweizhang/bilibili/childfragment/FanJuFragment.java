@@ -1,5 +1,7 @@
 package com.yongweizhang.bilibili.childfragment;
 
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -26,6 +28,8 @@ import okhttp3.Call;
 public class FanJuFragment extends BaseFragment {
     @InjectView(R.id.rv_yuan)
     RecyclerView rvYuan;
+    @InjectView(R.id.mySwipeRefreshLayout)
+    SwipeRefreshLayout mySwipeRefreshLayout;
 
 
     @Override
@@ -33,7 +37,41 @@ public class FanJuFragment extends BaseFragment {
 
         View view = View.inflate(mContext, R.layout.fragment_yuanch, null);
         ButterKnife.inject(this, view);
+        onRefresh();
         return view;
+    }
+
+    private void onRefresh() {
+
+        //设置下拉出现小圆圈是否是缩放出现，出现的位置，最大的下拉位置
+        mySwipeRefreshLayout.setProgressViewOffset(true, 50, 200);
+
+        //设置下拉圆圈的大小，两个值 LARGE， DEFAULT
+        mySwipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
+
+        // 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
+        mySwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_red_light);
+
+        initListener();
+    }
+
+    private void initListener() {
+        mySwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 刷新动画开始后回调到此方法
+                                getDataFromNet();
+                            }
+                        }, 2000);
+
+                    }
+                }
+        );
     }
 
     @Override
@@ -42,7 +80,9 @@ public class FanJuFragment extends BaseFragment {
 
         getDataFromNet();
     }
-    String url="http://app.bilibili.com/x/v2/rank?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&order=bangumi&platform=android&pn=1&ps=20&ts=1490015891000&sign=c29299ef4b95c26e104efc13437cf628";
+
+    String url = "http://app.bilibili.com/x/v2/rank?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&order=bangumi&platform=android&pn=1&ps=20&ts=1490015891000&sign=c29299ef4b95c26e104efc13437cf628";
+
     private void getDataFromNet() {
 
         OkHttpUtils.get()
@@ -52,15 +92,17 @@ public class FanJuFragment extends BaseFragment {
                     @Override
                     public void onError(Call call, Exception e, int id) {
 
-                        Log.e("TAG", "error="+e.getMessage());
+                        Log.e("TAG", "error=" + e.getMessage());
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
 
-                        Log.e("TAG", "response="+response);
+                        Log.e("TAG", "response=" + response);
 
                         processData(response);
+
+                        mySwipeRefreshLayout.setRefreshing(false);
                     }
                 });
     }
@@ -71,10 +113,10 @@ public class FanJuFragment extends BaseFragment {
 
         List<YuanChauangBean.DataBean> data = yuanChauangBean.getData();
         //设置适配器
-        YuanChuangAdapter adapter = new YuanChuangAdapter(mContext,data);
+        YuanChuangAdapter adapter = new YuanChuangAdapter(mContext, data);
 
         rvYuan.setAdapter(adapter);
-        GridLayoutManager manager = new GridLayoutManager(mContext,1);
+        GridLayoutManager manager = new GridLayoutManager(mContext, 1);
 
         rvYuan.setLayoutManager(manager);
 
@@ -85,4 +127,6 @@ public class FanJuFragment extends BaseFragment {
         super.onDestroyView();
         ButterKnife.reset(this);
     }
+
+
 }

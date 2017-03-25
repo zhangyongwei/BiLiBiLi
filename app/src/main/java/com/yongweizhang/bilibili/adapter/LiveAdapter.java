@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.yongweizhang.bilibili.R;
+import com.yongweizhang.bilibili.activity.GuanZhuActivity;
 import com.yongweizhang.bilibili.activity.LiveInfoActivity;
 import com.yongweizhang.bilibili.bean.HomeBean;
 import com.yongweizhang.bilibili.view.MyGridView;
@@ -254,7 +255,12 @@ public class LiveAdapter extends RecyclerView.Adapter {
             ivAnchor.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "关注", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "关注", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(mContext, GuanZhuActivity.class);
+
+                    mContext.startActivity(intent);
+
                 }
             });
             ivCenter.setOnClickListener(new View.OnClickListener() {

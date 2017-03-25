@@ -1,5 +1,6 @@
 package com.yongweizhang.bilibili.fragment;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -8,7 +9,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
+import com.yongweizhang.bilibili.activity.DownloadActivity;
+import com.yongweizhang.bilibili.activity.LoginActivity;
 import com.yongweizhang.bilibili.adapter.HomeViewPagerAdapter;
 
 import java.util.ArrayList;
@@ -46,6 +51,7 @@ public class HomeFragment extends BaseFragment {
 //    SwipeRefreshLayout mySwipeRefreshLayout;
     private HomeViewPagerAdapter adapter;
     private ArrayList<BaseFragment> fragments;
+    private Intent intent;
 
     @Override
     public View initView() {
@@ -68,37 +74,8 @@ public class HomeFragment extends BaseFragment {
         tablayout.setupWithViewPager(viewPager);
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-//        //设置下拉出现小圆圈是否是缩放出现，出现的位置，最大的下拉位置
-//        mySwipeRefreshLayout.setProgressViewOffset(true, 50, 200);
-//
-//        //设置下拉圆圈的大小，两个值 LARGE， DEFAULT
-//        mySwipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);
-//
-//        // 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
-//        mySwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_red_light);
-//
-//        iniListener();
 
     }
-
-//    private void iniListener() {
-//
-//        mySwipeRefreshLayout.setOnRefreshListener(
-//                new SwipeRefreshLayout.OnRefreshListener() {
-//                    @Override
-//                    public void onRefresh() {
-//                        // 刷新动画开始后回调到此方法
-//                        new Handler().postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//
-//
-//                            }
-//                        }, 2000);
-//                    }
-//                }
-//        );
-//    }
 
 
     private void initFragment() {
@@ -122,7 +99,10 @@ public class HomeFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_home:
-                Toast.makeText(getActivity(), "更多", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "登录", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext, LoginActivity.class);
+                startActivity(intent);
+
                 break;
             case R.id.iv_noface:
                 Toast.makeText(getActivity(), "头像", Toast.LENGTH_SHORT).show();
@@ -133,12 +113,29 @@ public class HomeFragment extends BaseFragment {
 
                 break;
             case R.id.iv_download:
-                Toast.makeText(getActivity(), "下载", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(getActivity(), "下载", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext, DownloadActivity.class);
+                startActivity(intent);
                 break;
             case R.id.iv_search:
-                Toast.makeText(getActivity(), "搜索", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "搜索", Toast.LENGTH_SHORT).show();
 
+                SearchFragment searchFragment = SearchFragment.newInstance();
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+
+                    @Override
+
+                    public void OnSearchClick(String keyword) {
+
+//这里处理逻辑
+
+                        Toast.makeText(mContext, keyword, Toast.LENGTH_SHORT).show();
+
+                    }
+
+                });
+
+                searchFragment.show(getFragmentManager(),SearchFragment.TAG);
                 break;
         }
     }

@@ -30,7 +30,7 @@
                 <ImageView
                     android:id="@+id/iv_home"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_drawer_home" />
 
@@ -40,10 +40,10 @@
 
                     <ImageView
                         android:id="@+id/iv_noface"
-                        android:layout_width="35dp"
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="15dp"
                         android:src="@drawable/bili_default_avatar" />
 
                 </RelativeLayout>
@@ -69,7 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:paddingLeft="35dp"
+                        android:paddingLeft="45dp"
                         android:src="@drawable/ic_menu_top_game_center" />
 
                     <ImageView
@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:paddingLeft="25dp"
-                        android:src="@drawable/ic_toolbar_menu_search" />
+                        android:src="@drawable/ic_download_search" />
                 </LinearLayout>
 
             </LinearLayout>

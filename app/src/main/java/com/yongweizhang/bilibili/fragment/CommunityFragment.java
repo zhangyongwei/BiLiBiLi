@@ -1,9 +1,7 @@
 package com.yongweizhang.bilibili.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -16,6 +14,8 @@ import com.github.hymanme.tagflowlayout.TagAdapter;
 import com.github.hymanme.tagflowlayout.TagFlowLayout;
 import com.github.hymanme.tagflowlayout.tags.ColorfulTagView;
 import com.github.hymanme.tagflowlayout.tags.DefaultTagView;
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.activity.RankActivity;
 import com.yongweizhang.bilibili.activity.TopicActivity;
@@ -142,7 +142,24 @@ public class CommunityFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_search:
-                Toast.makeText(mContext, "搜索", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "搜索", Toast.LENGTH_SHORT).show();
+
+                SearchFragment searchFragment = SearchFragment.newInstance();
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+
+                    @Override
+
+                    public void OnSearchClick(String keyword) {
+
+//这里处理逻辑
+
+                        Toast.makeText(mContext, keyword, Toast.LENGTH_SHORT).show();
+
+                    }
+
+                });
+
+                searchFragment.show(getFragmentManager(),SearchFragment.TAG);
                 break;
             case R.id.ll_like:
 //                Toast.makeText(mContext, "爱好", Toast.LENGTH_SHORT).show();
@@ -184,13 +201,7 @@ public class CommunityFragment extends BaseFragment {
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.inject(this, rootView);
-        return rootView;
-    }
+
 
     @Override
     public void onDestroyView() {

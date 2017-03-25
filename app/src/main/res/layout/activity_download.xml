@@ -43,20 +43,28 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:paddingLeft="10dp"
-                    android:text="排行榜"/>
+                    android:text="管理缓存"/>
+                <ImageView
+                    android:id="@+id/iv_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="80dp"
+                    android:src="@drawable/ic_download_edit"/>
+
                 <ImageView
                     android:id="@+id/iv_download"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:paddingLeft="130dp"
-                    android:src="@drawable/ic_toolbar_menu_download"/>
+                    android:paddingLeft="25dp"
+                    android:src="@drawable/ic_download_setting"/>
                 <ImageView
                     android:id="@+id/iv_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:paddingLeft="30dp"
+                    android:paddingLeft="25dp"
                     android:src="@drawable/ic_download_search"/>
 
 
