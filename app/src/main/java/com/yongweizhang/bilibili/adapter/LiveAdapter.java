@@ -20,6 +20,9 @@ import com.bumptech.glide.Glide;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.activity.GuanZhuActivity;
 import com.yongweizhang.bilibili.activity.LiveInfoActivity;
+import com.yongweizhang.bilibili.activity.LoginActivity;
+import com.yongweizhang.bilibili.activity.SearchActivity;
+import com.yongweizhang.bilibili.activity.TypeActivity;
 import com.yongweizhang.bilibili.bean.HomeBean;
 import com.yongweizhang.bilibili.view.MyGridView;
 import com.youth.banner.Banner;
@@ -57,7 +60,7 @@ public class LiveAdapter extends RecyclerView.Adapter {
      * 绘画
      */
     public static final int DRAW = 2;
-
+    private Intent intent;
 
 
     /**
@@ -257,7 +260,7 @@ public class LiveAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
 //                    Toast.makeText(mContext, "关注", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(mContext, GuanZhuActivity.class);
+                    intent = new Intent(mContext, GuanZhuActivity.class);
 
                     mContext.startActivity(intent);
 
@@ -266,8 +269,9 @@ public class LiveAdapter extends RecyclerView.Adapter {
             ivCenter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "中心", Toast.LENGTH_SHORT).show();
-
+//                    Toast.makeText(mContext, "中心", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(mContext, LoginActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
             ivVideo.setOnClickListener(new View.OnClickListener() {
@@ -280,15 +284,18 @@ public class LiveAdapter extends RecyclerView.Adapter {
             ivSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "搜索", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "搜索", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(mContext, SearchActivity.class);
+                    mContext.startActivity(intent);
 
                 }
             });
             ivCategory.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, "分类", Toast.LENGTH_SHORT).show();
-
+//                    Toast.makeText(mContext, "分类", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(mContext, TypeActivity.class);
+                    mContext.startActivity(intent);
                 }
             });
         }

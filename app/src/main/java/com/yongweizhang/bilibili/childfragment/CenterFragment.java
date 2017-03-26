@@ -2,6 +2,7 @@ package com.yongweizhang.bilibili.childfragment;
 
 import android.view.View;
 
+import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.fragment.BaseFragment;
 
 /**
@@ -11,6 +12,8 @@ import com.yongweizhang.bilibili.fragment.BaseFragment;
 public class CenterFragment extends BaseFragment {
     @Override
     public View initView() {
-        return null;
+        View view = View.inflate(mContext, R.layout.fragment_cache,null);
+
+        return view;
     }
 }

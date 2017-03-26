@@ -60,7 +60,9 @@
         <activity android:name=".activity.GuanZhuActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegistActivity" />
-        <activity android:name=".activity.DownloadActivity"></activity>
+        <activity android:name=".activity.DownloadActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.TypeActivity"></activity>
     </application>
 
 </manifest>

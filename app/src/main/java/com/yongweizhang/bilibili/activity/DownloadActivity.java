@@ -3,9 +3,13 @@ package com.yongweizhang.bilibili.activity;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.adapter.CacheAdapter;
 import com.yongweizhang.bilibili.childfragment.CacheFragment;
@@ -15,6 +19,7 @@ import com.yongweizhang.bilibili.fragment.BaseFragment;
 import java.util.ArrayList;
 
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class DownloadActivity extends BaseActivity {
 
@@ -40,6 +45,7 @@ public class DownloadActivity extends BaseActivity {
 
     @Override
     public void initListener() {
+
 
     }
 
@@ -76,4 +82,40 @@ public class DownloadActivity extends BaseActivity {
 
 
 
+
+    @OnClick({R.id.iv_back, R.id.iv_edit, R.id.iv_download, R.id.iv_search})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.iv_edit:
+                Toast.makeText(DownloadActivity.this, "编辑", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.iv_download:
+                Toast.makeText(DownloadActivity.this, "设置", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.iv_search:
+//                Toast.makeText(DownloadActivity.this, "搜索", Toast.LENGTH_SHORT).show();
+                SearchFragment searchFragment = SearchFragment.newInstance();
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+
+                    @Override
+
+                    public void OnSearchClick(String keyword) {
+
+//这里处理逻辑
+
+                        Toast.makeText(DownloadActivity.this, keyword, Toast.LENGTH_SHORT).show();
+
+                    }
+
+                });
+
+                searchFragment.show(getSupportFragmentManager(),SearchFragment.TAG);
+
+
+                break;
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.yongweizhang.bilibili.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.adapter.RankAdapter;
 import com.yongweizhang.bilibili.childfragment.FanJuFragment;
@@ -77,14 +80,35 @@ public class RankActivity extends BaseActivity {
         ivDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RankActivity.this, "下载更多", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RankActivity.this, "下载更多", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RankActivity.this,DownloadActivity.class);
+                startActivity(intent);
+
             }
         });
 
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RankActivity.this, "搜索", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RankActivity.this, "搜索", Toast.LENGTH_SHORT).show();
+
+                SearchFragment searchFragment = SearchFragment.newInstance();
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+
+                    @Override
+
+                    public void OnSearchClick(String keyword) {
+
+//这里处理逻辑
+
+                        Toast.makeText(RankActivity.this, keyword, Toast.LENGTH_SHORT).show();
+
+                    }
+
+                });
+
+                searchFragment.show(getSupportFragmentManager(),SearchFragment.TAG);
+
             }
         });
     }

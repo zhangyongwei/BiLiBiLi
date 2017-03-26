@@ -9,15 +9,15 @@ import com.yongweizhang.bilibili.R;
 
 import butterknife.InjectView;
 
-public class GuanZhuActivity extends BaseActivity {
-
+public class TypeActivity extends BaseActivity {
 
     @InjectView(R.id.iv_back)
     ImageView ivBack;
-    @InjectView(R.id.tv_text)
-    TextView tvText;
-    @InjectView(R.id.activity_guan_zhu)
-    LinearLayout activityGuanZhu;
+    @InjectView(R.id.tv_login)
+    TextView tvLogin;
+    @InjectView(R.id.activity_type)
+    LinearLayout activityType;
+
 
     @Override
     public void initListener() {
@@ -33,7 +33,6 @@ public class GuanZhuActivity extends BaseActivity {
     @Override
     public void initData() {
 
-
     }
 
     @Override
@@ -43,9 +42,6 @@ public class GuanZhuActivity extends BaseActivity {
 
     @Override
     public int getLayoutid() {
-        return R.layout.activity_guan_zhu;
+        return R.layout.activity_type;
     }
-
-
-
 }

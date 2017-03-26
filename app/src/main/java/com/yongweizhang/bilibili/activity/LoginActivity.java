@@ -43,6 +43,7 @@ public class LoginActivity extends BaseActivity {
     Button btnLogin;
     @InjectView(R.id.activity_login)
     LinearLayout activityLogin;
+    private Intent intent;
 
     @Override
     public void initListener() {
@@ -65,13 +66,67 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                login();
+
+                Intent intent =new Intent(LoginActivity.this,MainActivity.class);
+
+                startActivity(intent);
+            }
+        });
     }
 
+//    private void login(){
+//
+//        String username = etUser.getText().toString().trim();
+//        String password = etPwd.getText().toString().trim();
+//
+//        if (TextUtils.isEmpty(username)) {
+//
+//            showToast("账号不能为空");
+//
+//            return;
+//        }
+//        if (TextUtils.isEmpty(password)) {
+//
+//            showToast("密码不能为空");
+//
+//            return;
+//        }
+//
+//        //去服务器登录
+//        Map<String, String> map = new HashMap<String, String>();
+//
+//        map.put("user", username);
+//
+//        map.put("password", password);
+//
+//        OkHttpUtils.get()
+//                .url("http://47.93.118.241:8081/P2PInvest/login")
+//                .build()
+//                .execute(new StringCallback() {
+//                    @Override
+//                    public void onError(Call call, Exception e, int id) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onResponse(String response, int id) {
+//
+//                    }
+//                });
+//    }
     @Override
     public void initData() {
 
         username.setHint("你的手机号/邮箱");
         passWord.setHint("请输入密码");
+        username.setErrorEnabled(true);
+        passWord.setErrorEnabled(true);
     }
 
     @Override
@@ -95,10 +150,13 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.btn_regist:
 
-                Intent intent = new Intent(LoginActivity.this,RegistActivity.class);
+                intent = new Intent(LoginActivity.this,RegistActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_login:
+                intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+
                 break;
         }
     }

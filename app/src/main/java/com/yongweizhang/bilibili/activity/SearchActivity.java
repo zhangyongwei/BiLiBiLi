@@ -1,28 +1,30 @@
 package com.yongweizhang.bilibili.activity;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.yongweizhang.bilibili.R;
 
 import butterknife.InjectView;
 
-public class GuanZhuActivity extends BaseActivity {
+public class SearchActivity extends BaseActivity {
 
 
-    @InjectView(R.id.iv_back)
-    ImageView ivBack;
-    @InjectView(R.id.tv_text)
-    TextView tvText;
-    @InjectView(R.id.activity_guan_zhu)
-    LinearLayout activityGuanZhu;
+    @InjectView(R.id.iv_exit)
+    ImageView ivExit;
+    @InjectView(R.id.et_search)
+    EditText etSearch;
+    @InjectView(R.id.iv_default)
+    ImageView ivDefault;
+    @InjectView(R.id.activity_search)
+    LinearLayout activitySearch;
 
     @Override
     public void initListener() {
 
-        ivBack.setOnClickListener(new View.OnClickListener() {
+        ivExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -33,7 +35,6 @@ public class GuanZhuActivity extends BaseActivity {
     @Override
     public void initData() {
 
-
     }
 
     @Override
@@ -43,9 +44,8 @@ public class GuanZhuActivity extends BaseActivity {
 
     @Override
     public int getLayoutid() {
-        return R.layout.activity_guan_zhu;
+        return R.layout.activity_search;
     }
-
 
 
 }
