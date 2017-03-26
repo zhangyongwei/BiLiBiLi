@@ -22,4 +22,9 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="ToolBar.TitleText" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
 </resources>
