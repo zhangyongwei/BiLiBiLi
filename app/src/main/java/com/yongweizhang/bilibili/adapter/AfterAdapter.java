@@ -38,7 +38,6 @@ public class AfterAdapter extends RecyclerView.Adapter {
     public int currentType = GRIDVIEW;
 
 
-
     public AfterAdapter(Context mContext, AfterBean.ResultBean result) {
         this.mContext = mContext;
         this.result = result;
@@ -125,10 +124,6 @@ public class AfterAdapter extends RecyclerView.Adapter {
     class GridviewViewHolder extends RecyclerView.ViewHolder {
 
         private final Context mContext;
-        @InjectView(R.id.iv_jp)
-        ImageView ivJp;
-        @InjectView(R.id.iv_cn)
-        ImageView ivCn;
         @InjectView(R.id.iv_time)
         LinearLayout ivTime;
         @InjectView(R.id.iv_index)
@@ -145,6 +140,7 @@ public class AfterAdapter extends RecyclerView.Adapter {
         ImageView ivRight;
         @InjectView(R.id.gv_after)
         MyGridView gvAfter;
+
 
         private HeadAdapter adapter;
 

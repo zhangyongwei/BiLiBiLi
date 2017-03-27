@@ -186,24 +186,38 @@ public class MainActivity extends AppCompatActivity
             position = 0;
         } else if (id == R.id.it_member) {
 
+
         } else if (id == R.id.it_memberpoints) {
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.it_cache) {
+            Intent intent = new Intent(MainActivity.this,DownloadActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.it_laterlook) {
             position = 1;
         } else if (id == R.id.it_collect) {
-            position = 2;
+
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
         }else if (id == R.id.it_history) {
-            position = 3;
+            Intent intent = new Intent(MainActivity.this,HistoryActivity.class);
+            startActivity(intent);
         }else if (id == R.id.it_like) {
-            position = 4;
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
+
+
         }else if (id == R.id.it_wallet) {
-            position = 5;
+
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
         }else if (id == R.id.it_selector) {
             position = 6;
         }else if (id == R.id.it_help) {
-
+            Intent intent = new Intent(MainActivity.this,SettingActivity.class);
+            startActivity(intent);
         }
 
         //根据位置切换到对应的fragment

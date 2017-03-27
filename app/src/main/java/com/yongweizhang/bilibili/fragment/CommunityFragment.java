@@ -17,6 +17,7 @@ import com.github.hymanme.tagflowlayout.tags.DefaultTagView;
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
+import com.yongweizhang.bilibili.activity.LoginActivity;
 import com.yongweizhang.bilibili.activity.RankActivity;
 import com.yongweizhang.bilibili.activity.TopicActivity;
 import com.yongweizhang.bilibili.bean.FoundBean;
@@ -163,7 +164,7 @@ public class CommunityFragment extends BaseFragment {
                 break;
             case R.id.ll_like:
 //                Toast.makeText(mContext, "爱好", Toast.LENGTH_SHORT).show();
-                intent = new Intent(mContext, TopicActivity.class);
+                intent = new Intent(mContext, LoginActivity.class);
                 mContext.startActivity(intent);
                 break;
             case R.id.ll_center:

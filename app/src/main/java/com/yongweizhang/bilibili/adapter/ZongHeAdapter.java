@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.bean.ZongHeBean;
@@ -94,6 +96,14 @@ public class ZongHeAdapter extends RecyclerView.Adapter {
             adapter = new ZongGridAdapter(mContext,datas);
             gvCard.setAdapter(adapter);
 
+
+            gvCard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Toast.makeText(mContext, "被点击了", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

@@ -58,6 +58,7 @@ public class TopicWebActivity extends AppCompatActivity {
             wbInfoMore.loadUrl(link);
         }
         shareToolbar.setTitle(TextUtils.isEmpty(titles) ? "详情" : titles);
+//        shareToolbar.setTitle( "详情" );
 
         setSupportActionBar(shareToolbar);
         ActionBar supportActionBar = getSupportActionBar();

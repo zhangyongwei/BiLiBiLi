@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yongweizhang.bilibili.R;
+import com.yongweizhang.bilibili.utils.IEditTextChangeListener;
+import com.yongweizhang.bilibili.utils.WorksSizeCheckUtil;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -66,67 +68,55 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                login();
-
-                Intent intent =new Intent(LoginActivity.this,MainActivity.class);
-
+                Intent intent = new Intent(LoginActivity.this,RegistActivity.class);
                 startActivity(intent);
             }
         });
+
+        //1.设置监听
+        WorksSizeCheckUtil.textChangeListener textChangeListener =
+                new WorksSizeCheckUtil.textChangeListener(btnLogin);
+
+        //2.
+        textChangeListener.addAllEditText(etUser, etPwd);
+
+        //3.判断是否有内容，如果有内容改变颜色
+        WorksSizeCheckUtil.setChangeListener(new IEditTextChangeListener() {
+            @Override
+            public void textChange(boolean isHasContent) {
+                if(isHasContent) {
+
+                    btnLogin.setEnabled(true);
+
+                    btnLogin.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent =new Intent(LoginActivity.this,MainActivity.class);
+
+                             startActivity(intent);
+                        }
+                    });
+                }else{
+
+                    btnLogin.setEnabled(false);
+
+                }
+            }
+        });
+
     }
 
-//    private void login(){
-//
-//        String username = etUser.getText().toString().trim();
-//        String password = etPwd.getText().toString().trim();
-//
-//        if (TextUtils.isEmpty(username)) {
-//
-//            showToast("账号不能为空");
-//
-//            return;
-//        }
-//        if (TextUtils.isEmpty(password)) {
-//
-//            showToast("密码不能为空");
-//
-//            return;
-//        }
-//
-//        //去服务器登录
-//        Map<String, String> map = new HashMap<String, String>();
-//
-//        map.put("user", username);
-//
-//        map.put("password", password);
-//
-//        OkHttpUtils.get()
-//                .url("http://47.93.118.241:8081/P2PInvest/login")
-//                .build()
-//                .execute(new StringCallback() {
-//                    @Override
-//                    public void onError(Call call, Exception e, int id) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(String response, int id) {
-//
-//                    }
-//                });
-//    }
+
     @Override
     public void initData() {
 
         username.setHint("你的手机号/邮箱");
         passWord.setHint("请输入密码");
-        username.setErrorEnabled(true);
-        passWord.setErrorEnabled(true);
+//        username.setErrorEnabled(true);
+//        passWord.setErrorEnabled(true);
     }
 
     @Override

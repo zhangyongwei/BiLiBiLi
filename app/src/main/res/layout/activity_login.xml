@@ -104,6 +104,7 @@
             android:id="@+id/et_pwd"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:password="true"
             android:drawableLeft="@drawable/ic_login_password_default"
             android:drawablePadding="8dp" />
 

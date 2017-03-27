@@ -3,7 +3,9 @@ package com.yongweizhang.bilibili.fragment;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,7 +15,6 @@ import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.activity.DownloadActivity;
-import com.yongweizhang.bilibili.activity.LoginActivity;
 import com.yongweizhang.bilibili.adapter.HomeViewPagerAdapter;
 
 import java.util.ArrayList;
@@ -100,9 +101,10 @@ public class HomeFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.iv_home:
 //                Toast.makeText(getActivity(), "登录", Toast.LENGTH_SHORT).show();
-                intent = new Intent(mContext, LoginActivity.class);
-                startActivity(intent);
-
+//                intent = new Intent(mContext, LoginActivity.class);
+//                startActivity(intent);
+                DrawerLayout drawer = (DrawerLayout)getActivity(). findViewById(R.id.drawer_layout);
+                drawer.openDrawer(GravityCompat.START);
                 break;
             case R.id.iv_noface:
                 Toast.makeText(getActivity(), "头像", Toast.LENGTH_SHORT).show();

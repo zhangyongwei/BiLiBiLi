@@ -15,8 +15,10 @@ import com.shuyu.gsyvideoplayer.listener.LockClickListener;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.yongweizhang.bilibili.R;
+import com.yongweizhang.bilibili.adapter.GridViewAdapter;
 import com.yongweizhang.bilibili.base.SampleListener;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class DanmkuVideoActivity extends AppCompatActivity {
@@ -38,20 +40,23 @@ public class DanmkuVideoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danmku_video);
-
+        ButterKnife.inject(this);
         //使用自定义的全屏切换图片，!!!注意xml布局中也需要设置为一样的
         //必须在setUp之前设置
         danmakuPlayer.setShrinkImageRes(R.drawable.custom_shrink);
         danmakuPlayer.setEnlargeImageRes(R.drawable.custom_enlarge);
 
-        String url = "http://baobab.wdjcdn.com/14564977406580.mp4";
+//        String url = "http://baobab.wdjcdn.com/14564977406580.mp4";
+        String url = getIntent().getStringExtra(GridViewAdapter.VIDEO);
+        String title = getIntent().getStringExtra(GridViewAdapter.VT);
         //String url = "https://res.exexm.com/cw_145225549855002";
         danmakuPlayer.setUp(url, true, null, "测试视频");
 
         //增加封面
+
         ImageView imageView = new ImageView(this);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(R.mipmap.xxx1);
+        imageView.setImageResource(R.mipmap.tttt);
         danmakuPlayer.setThumbImageView(imageView);
 
         resolveNormalVideoUI();
