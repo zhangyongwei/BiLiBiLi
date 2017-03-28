@@ -82,7 +82,7 @@
         android:layout_height="40dp"
         android:textColor="@android:color/white"
         android:background="@drawable/button_selector"
-        android:text="获取验证码"/>
+        android:text="注册"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,9 +1,12 @@
 package com.yongweizhang.bilibili.fragment;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,11 +17,14 @@ import com.github.hymanme.tagflowlayout.TagAdapter;
 import com.github.hymanme.tagflowlayout.TagFlowLayout;
 import com.github.hymanme.tagflowlayout.tags.ColorfulTagView;
 import com.github.hymanme.tagflowlayout.tags.DefaultTagView;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.activity.LoginActivity;
 import com.yongweizhang.bilibili.activity.RankActivity;
+import com.yongweizhang.bilibili.activity.SouSuoActivity;
 import com.yongweizhang.bilibili.activity.TopicActivity;
 import com.yongweizhang.bilibili.bean.FoundBean;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -40,6 +46,8 @@ public class CommunityFragment extends BaseFragment {
 
     @InjectView(R.id.tv_search)
     TextView tvSearch;
+    @InjectView(R.id.iv_scan)
+    ImageView ivScan;
     @InjectView(R.id.tag_flow_layout)
     TagFlowLayout tagFlowLayout;
     @InjectView(R.id.ll_like)
@@ -65,7 +73,29 @@ public class CommunityFragment extends BaseFragment {
         View view = View.inflate(mContext, R.layout.community_fragment, null);
         ButterKnife.inject(this, view);
         return view;
+    }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /**
+         * 处理二维码扫描结果
+         */
+        if (requestCode == 1) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    Toast.makeText(mContext, "解析结果:" + result, Toast.LENGTH_LONG).show();
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    Toast.makeText(mContext, "解析二维码失败", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 
     @Override
@@ -113,7 +143,11 @@ public class CommunityFragment extends BaseFragment {
         tagFlowLayout.setTagListener(new OnTagClickListener() {
             @Override
             public void onClick(TagFlowLayout parent, View view, int position) {
-                Toast.makeText(mContext, "click==" + ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext, "click==" + ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(mContext, SouSuoActivity.class);
+                mContext.startActivity(intent);
+
             }
 
             @Override
@@ -139,7 +173,7 @@ public class CommunityFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.tv_search, R.id.ll_like, R.id.ll_center, R.id.ll_activity, R.id.ll_balckhome, R.id.ll_rank, R.id.ll_all, R.id.ll_game, R.id.ll_shop})
+    @OnClick({R.id.tv_search,R.id.iv_scan, R.id.ll_like, R.id.ll_center, R.id.ll_activity, R.id.ll_balckhome, R.id.ll_rank, R.id.ll_all, R.id.ll_game, R.id.ll_shop})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_search:
@@ -160,7 +194,18 @@ public class CommunityFragment extends BaseFragment {
 
                 });
 
-                searchFragment.show(getFragmentManager(),SearchFragment.TAG);
+                searchFragment.show(getFragmentManager(), SearchFragment.TAG);
+                break;
+
+            case R.id.iv_scan:
+//                Toast.makeText(mContext, "扫一扫", Toast.LENGTH_SHORT).show();
+                ivScan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(mContext, CaptureActivity.class);
+                        startActivityForResult(intent, 1);
+                    }
+                });
                 break;
             case R.id.ll_like:
 //                Toast.makeText(mContext, "爱好", Toast.LENGTH_SHORT).show();
@@ -203,11 +248,18 @@ public class CommunityFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.inject(this, rootView);
+        return rootView;
     }
 
     class MyTagAdapter extends TagAdapter<FoundBean.DataBean.ListBean> {

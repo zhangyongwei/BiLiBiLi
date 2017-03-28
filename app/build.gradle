@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 25
@@ -19,6 +20,13 @@ android {
     }
 }
 
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.yongweizhang.bilibili.gen'
+    targetGenDir 'src/main/java'
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -37,5 +45,8 @@ dependencies {
     compile 'com.wenwenwen888:searchbox:1.0.0'
     compile 'com.github.CarGuo:GSYVideoPlayer:v1.6.1'
     compile 'com.github.ctiao:dfm:0.7.3'
+    compile 'cn.yipianfengye.android:zxing-library:2.1'
+    compile'org.greenrobot:greendao:3.0.1'
+    compile'org.greenrobot:greendao-generator:3.0.0'
 
 }

@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity
         iv_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "头像", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "头像", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
 
