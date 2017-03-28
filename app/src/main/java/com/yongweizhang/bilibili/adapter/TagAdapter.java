@@ -118,6 +118,7 @@ public class TagAdapter extends RecyclerView.Adapter {
             playCount.setText(archiveBean.getPlay() + "");
             tvUsername.setText(archiveBean.getAuthor());
 
+
             itemCardview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

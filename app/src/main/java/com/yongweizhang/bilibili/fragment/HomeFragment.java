@@ -15,6 +15,7 @@ import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.activity.DownloadActivity;
+import com.yongweizhang.bilibili.activity.SouSuoActivity;
 import com.yongweizhang.bilibili.adapter.HomeViewPagerAdapter;
 
 import java.util.ArrayList;
@@ -130,8 +131,12 @@ public class HomeFragment extends BaseFragment {
                     public void OnSearchClick(String keyword) {
 
 //这里处理逻辑
+                        Intent intent = new Intent(getActivity(), SouSuoActivity.class);
 
-                        Toast.makeText(mContext, keyword, Toast.LENGTH_SHORT).show();
+                        intent.putExtra("key",keyword);
+
+                        mContext.startActivity(intent);
+//                        Toast.makeText(mContext, keyword, Toast.LENGTH_SHORT).show();
 
                     }
 

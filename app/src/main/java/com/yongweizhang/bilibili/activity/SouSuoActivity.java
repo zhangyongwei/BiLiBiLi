@@ -2,6 +2,7 @@ package com.yongweizhang.bilibili.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,6 +38,15 @@ public class SouSuoActivity extends BaseActivity {
     @Override
     public void initListener() {
 
+        String key = getIntent().getStringExtra("key");
+        tvSearch.setText(key);
+
+        ivExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

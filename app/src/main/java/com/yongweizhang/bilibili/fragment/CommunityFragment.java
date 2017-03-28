@@ -3,7 +3,6 @@ package com.yongweizhang.bilibili.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -67,6 +66,7 @@ public class CommunityFragment extends BaseFragment {
     @InjectView(R.id.ll_shop)
     LinearLayout llShop;
     private Intent intent;
+    private List<FoundBean.DataBean.ListBean> list;
 
     @Override
     public View initView() {
@@ -145,7 +145,10 @@ public class CommunityFragment extends BaseFragment {
             public void onClick(TagFlowLayout parent, View view, int position) {
 //                Toast.makeText(mContext, "click==" + ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(mContext, SouSuoActivity.class);
+                Intent intent = new Intent(getActivity(), SouSuoActivity.class);
+
+                intent.putExtra("key",list.get(position).getKeyword());
+
                 mContext.startActivity(intent);
 
             }
@@ -163,12 +166,14 @@ public class CommunityFragment extends BaseFragment {
 
         FoundBean foundBean = JSON.parseObject(json, FoundBean.class);
         FoundBean.DataBean dataBean = foundBean.getData();
-        List<FoundBean.DataBean.ListBean> list = dataBean.getList();
+        list = dataBean.getList();
         //设置adapter
         MyTagAdapter tagAdapter = new MyTagAdapter();
         tagFlowLayout.setTagAdapter(tagAdapter);
         //给adapter绑定数据
         tagAdapter.addAllTags(list);
+
+
 
     }
 
@@ -254,13 +259,7 @@ public class CommunityFragment extends BaseFragment {
         ButterKnife.reset(this);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.inject(this, rootView);
-        return rootView;
-    }
+
 
     class MyTagAdapter extends TagAdapter<FoundBean.DataBean.ListBean> {
 

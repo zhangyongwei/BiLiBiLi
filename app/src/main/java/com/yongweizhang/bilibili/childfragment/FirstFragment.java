@@ -12,6 +12,7 @@ import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.adapter.TagAdapter;
 import com.yongweizhang.bilibili.bean.TagBean;
 import com.yongweizhang.bilibili.fragment.BaseFragment;
+import com.yongweizhang.bilibili.utils.AppNetConfig;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -48,11 +49,12 @@ public class FirstFragment extends BaseFragment {
 
         getDataFromNet();
     }
-    String url = "http://app.bilibili.com/x/v2/search?appkey=1d8b6e7d45233436&build=501000&duration=0&keyword=极乐净土&mobi_app=android&platform=android&pn=1&ps=20";
+//    String url = "http://app.bilibili.com/x/v2/search?appkey=1d8b6e7d45233436&build=501000&duration=0&keyword=极乐净土&mobi_app=android&platform=android&pn=1&ps=20";
     private void getDataFromNet() {
 
         OkHttpUtils.get()
-                .url(url)
+                .url(AppNetConfig.SEARCH_FIRST+getActivity().getIntent().getStringExtra("key")+
+                AppNetConfig.SEARCH_THIRD)
                 .build()
                 .execute(new StringCallback() {
                     @Override
