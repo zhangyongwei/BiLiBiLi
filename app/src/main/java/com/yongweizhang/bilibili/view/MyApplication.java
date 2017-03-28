@@ -1,7 +1,9 @@
 package com.yongweizhang.bilibili.view;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
 
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.yongweizhang.bilibili.gen.DaoMaster;
@@ -17,13 +19,34 @@ public class MyApplication extends Application {
     private DaoMaster mDaoMaster;
     private DaoSession mDaoSession;
     public static MyApplication instances;
+    private static int threadid;
+
+    private static Handler handler;
+    private static Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        context = this;
         ZXingLibrary.initDisplayOpinion(this);
         instances = this;
+        threadid = android.os.Process.myPid();
+        handler = new Handler();
         setDatabase();
+    }
+
+    public static Context getContext() {
+        return context;
+    }
+
+
+
+    public static int getThreadid() {
+        return threadid;
+    }
+
+    public static Handler getHandler() {
+        return handler;
     }
     public static MyApplication getInstances(){
         return instances;

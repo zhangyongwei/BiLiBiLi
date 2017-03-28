@@ -23,6 +23,7 @@ import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.activity.LoginActivity;
 import com.yongweizhang.bilibili.activity.RankActivity;
+import com.yongweizhang.bilibili.activity.ShoppingActivity;
 import com.yongweizhang.bilibili.activity.SouSuoActivity;
 import com.yongweizhang.bilibili.activity.TopicActivity;
 import com.yongweizhang.bilibili.bean.FoundBean;
@@ -246,8 +247,9 @@ public class CommunityFragment extends BaseFragment {
 
                 break;
             case R.id.ll_shop:
-                Toast.makeText(mContext, "商城", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(mContext, "商城", Toast.LENGTH_SHORT).show();
+                intent = new Intent(mContext, ShoppingActivity.class);
+                startActivity(intent);
                 break;
         }
     }

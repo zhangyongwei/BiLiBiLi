@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_shopping"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yongweizhang.bilibili.activity.ShoppingActivity">
+
+
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <RadioGroup
+        android:id="@+id/rg_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_bottom_parent_bg"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            style="@style/MainButtonStyle"
+            android:text="首页"
+            android:drawableTop="@drawable/home_button_selector"/>
+
+        <RadioButton
+            android:id="@+id/rb_cart"
+            style="@style/MainButtonStyle"
+            android:text="购物车"
+            android:drawableTop="@drawable/cart_button_selector"/>
+        <RadioButton
+            android:id="@+id/rb_user"
+            style="@style/MainButtonStyle"
+            android:text="个人订单"
+            android:drawableTop="@drawable/user_button_selector"/>
+
+
+    </RadioGroup>
+</LinearLayout>

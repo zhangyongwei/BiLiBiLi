@@ -46,7 +46,10 @@ dependencies {
     compile 'com.github.CarGuo:GSYVideoPlayer:v1.6.1'
     compile 'com.github.ctiao:dfm:0.7.3'
     compile 'cn.yipianfengye.android:zxing-library:2.1'
-    compile'org.greenrobot:greendao:3.0.1'
-    compile'org.greenrobot:greendao-generator:3.0.0'
-
+    compile 'org.greenrobot:greendao:3.0.1'
+    compile 'org.greenrobot:greendao-generator:3.0.0'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile files('libs/alipaysdk.jar')
+    compile files('libs/alipaysecsdk.jar')
+    compile files('libs/alipayutdid.jar')
 }
