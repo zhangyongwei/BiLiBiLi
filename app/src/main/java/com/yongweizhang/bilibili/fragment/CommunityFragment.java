@@ -21,6 +21,7 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
+import com.yongweizhang.bilibili.activity.DownLoadListActivity;
 import com.yongweizhang.bilibili.activity.LoginActivity;
 import com.yongweizhang.bilibili.activity.RankActivity;
 import com.yongweizhang.bilibili.activity.ShoppingActivity;
@@ -233,21 +234,18 @@ public class CommunityFragment extends BaseFragment {
 
                 break;
             case R.id.ll_rank:
-//                Toast.makeText(mContext, "原创", Toast.LENGTH_SHORT).show();
                 intent = new Intent(mContext, RankActivity.class);
                 startActivity(intent);
                 break;
             case R.id.ll_all:
-//                Toast.makeText(mContext, "全部", Toast.LENGTH_SHORT).show();
                 intent = new Intent(mContext, RankActivity.class);
                 startActivity(intent);
                 break;
             case R.id.ll_game:
-                Toast.makeText(mContext, "游戏", Toast.LENGTH_SHORT).show();
-
+                intent = new Intent(mContext,DownLoadListActivity.class);
+                startActivity(intent);
                 break;
             case R.id.ll_shop:
-//                Toast.makeText(mContext, "商城", Toast.LENGTH_SHORT).show();
                 intent = new Intent(mContext, ShoppingActivity.class);
                 startActivity(intent);
                 break;

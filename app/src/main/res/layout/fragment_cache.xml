@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -18,6 +19,48 @@
             android:textSize="25sp"
             android:drawableTop="@drawable/img_tips_error_no_downloads"
             android:text="没有找到你的缓存哦"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.yongweizhang.bilibili.progress.MyProgressBar
+                android:layout_marginTop="5dp"
+                android:id="@+id/progressbar"
+                android:layout_marginLeft="8dp"
+                android:layout_width="50dp"
+                android:gravity="center"
+                app:bgColor="#4000"
+                app:progressWidth="4dp"
+                app:srcColor="#2196F3"
+                app:textColor="#000"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="0%"
+                android:textSize="14sp" />
+
+            <Button
+                android:layout_marginTop="5dp"
+                android:id="@+id/bt_download"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:text="下载最新APK"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:background="@drawable/button_selector"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

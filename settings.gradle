@@ -1,1 +1,1 @@
-include ':app', ':myapplication'
+include ':app', ':myapplication', ':JPushExample(611794)'

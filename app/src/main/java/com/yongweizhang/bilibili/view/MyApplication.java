@@ -9,6 +9,8 @@ import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.yongweizhang.bilibili.gen.DaoMaster;
 import com.yongweizhang.bilibili.gen.DaoSession;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by 张永卫on 2017/3/27.
  */
@@ -33,6 +35,8 @@ public class MyApplication extends Application {
         threadid = android.os.Process.myPid();
         handler = new Handler();
         setDatabase();
+        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);     		// 初始化 JPush
     }
 
     public static Context getContext() {

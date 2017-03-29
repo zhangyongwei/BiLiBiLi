@@ -245,7 +245,7 @@ public class TwoFragment extends BaseFragment {
             case R.id.btn_check_out:
 
                 //调支付宝
-                AliPayUtils.getInstance().pay(getActivity(), "1");
+                AliPayUtils.getInstance().pay(getActivity(), "0.01");
                 break;
             case R.id.checkbox_delete_all:
 //                Toast.makeText(mContext, "删除全选", Toast.LENGTH_SHORT).show();
