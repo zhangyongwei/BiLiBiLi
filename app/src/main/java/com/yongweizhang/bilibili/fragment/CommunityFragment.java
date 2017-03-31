@@ -69,6 +69,7 @@ public class CommunityFragment extends BaseFragment {
     LinearLayout llShop;
     private Intent intent;
     private List<FoundBean.DataBean.ListBean> list;
+    private static final int REQUEST_CODE = 111;
 
     @Override
     public View initView() {
@@ -83,7 +84,7 @@ public class CommunityFragment extends BaseFragment {
         /**
          * 处理二维码扫描结果
          */
-        if (requestCode == 1) {
+        if (requestCode == REQUEST_CODE) {
             //处理扫描结果（在界面上显示）
             if (null != data) {
                 Bundle bundle = data.getExtras();
@@ -93,6 +94,8 @@ public class CommunityFragment extends BaseFragment {
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     Toast.makeText(mContext, "解析结果:" + result, Toast.LENGTH_LONG).show();
+
+
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     Toast.makeText(mContext, "解析二维码失败", Toast.LENGTH_LONG).show();
                 }
@@ -210,7 +213,7 @@ public class CommunityFragment extends BaseFragment {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(mContext, CaptureActivity.class);
-                        startActivityForResult(intent, 1);
+                        startActivityForResult(intent,REQUEST_CODE);
                     }
                 });
                 break;
@@ -271,4 +274,7 @@ public class CommunityFragment extends BaseFragment {
             return textView;
         }
     }
+
+
+
 }

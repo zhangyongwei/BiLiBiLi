@@ -136,6 +136,7 @@ public class LoginActivity extends BaseActivity {
 
                     User user = new User(null, etUser.getText().toString().trim(),
                             etPwd.getText().toString().trim());
+
                     userDao.insert(user);
 
                     Toast.makeText(LoginActivity.this, "注册成功", Toast.LENGTH_SHORT).show();

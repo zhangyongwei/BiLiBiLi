@@ -7,24 +7,23 @@
     android:fitsSystemWindows="true"
     tools:context="com.yongweizhang.bilibili.activity.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.bilibili.magicasakura.widgets.TintAppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/theme_color_primary">
 
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
+        <com.bilibili.magicasakura.widgets.TintToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent"
+            android:background="@color/theme_color_primary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <LinearLayout
+            <com.bilibili.magicasakura.widgets.TintLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
+                android:background="@color/theme_color_primary"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -57,11 +56,11 @@
                     android:text="硪祗宠妳" />
 
 
-                <LinearLayout
+                <com.bilibili.magicasakura.widgets.TintLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@color/colorAccent"
+                    android:background="@color/theme_color_primary"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -87,20 +86,19 @@
                         android:layout_gravity="center"
                         android:paddingLeft="25dp"
                         android:src="@drawable/ic_download_search" />
-                </LinearLayout>
+                </com.bilibili.magicasakura.widgets.TintLinearLayout>
 
-            </LinearLayout>
-        </android.support.v7.widget.Toolbar>
+            </com.bilibili.magicasakura.widgets.TintLinearLayout>
+        </com.bilibili.magicasakura.widgets.TintToolbar>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorAccent"
             app:tabIndicatorColor="@android:color/white" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.bilibili.magicasakura.widgets.TintAppBarLayout>
 
     <!--<android.support.v4.widget.SwipeRefreshLayout-->
         <!--android:id="@+id/mySwipeRefreshLayout"-->

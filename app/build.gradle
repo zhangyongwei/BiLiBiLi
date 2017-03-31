@@ -55,4 +55,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile files('libs/jcore-android_v1.1.1.jar')
     compile files('libs/jpush-android_v3.0.3.jar')
+    compile 'com.bilibili:magicasakura:0.1.5@aar'
+    
 }

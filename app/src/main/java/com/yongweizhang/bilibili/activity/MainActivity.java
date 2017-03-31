@@ -1,6 +1,9 @@
 package com.yongweizhang.bilibili.activity;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -20,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bilibili.magicasakura.utils.ThemeUtils;
 import com.yongweizhang.bilibili.R;
 import com.yongweizhang.bilibili.fragment.BaseFragment;
 import com.yongweizhang.bilibili.fragment.HomeFragment;
@@ -29,6 +33,7 @@ import com.yongweizhang.bilibili.fragment.ItLikeFragment;
 import com.yongweizhang.bilibili.fragment.ItSelectorFragment;
 import com.yongweizhang.bilibili.fragment.ItShouCangFragment;
 import com.yongweizhang.bilibili.fragment.ItWalletFragment;
+import com.yongweizhang.bilibili.utils.ThemeHelper;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -56,11 +61,17 @@ public class MainActivity extends AppCompatActivity
      */
     private Fragment tempFragment;
     private FragmentTransaction ft;
+    private int i = 0;
+
 
     private ImageView iv_title;
     private ImageView iv_xin;
     private ImageView iv_night;
     private TextView tv_name;
+    private int[] colors = {ThemeHelper.CARD_FIREY, ThemeHelper.CARD_HOPE, ThemeHelper.CARD_LIGHT,
+            ThemeHelper.CARD_SAKURA, ThemeHelper.CARD_SAND, ThemeHelper.CARD_STORM,
+            ThemeHelper.CARD_THUNDER, ThemeHelper.CARD_WOOD};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,9 +125,16 @@ public class MainActivity extends AppCompatActivity
         iv_night.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "夜晚", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "夜晚", Toast.LENGTH_SHORT).show();
+                i++;
+                if(i>=colors.length) {
+                    i = 0;
+                }
+                onConfirm(colors[i]);
 
-            }
+
+
+        }
         });
         tv_name.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +147,30 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.setNavigationItemSelectedListener(this);
         switchFragment(fragments.get(0));
+    }
+
+    public void onConfirm(int currentTheme) {
+        if (ThemeHelper.getTheme(MainActivity.this) != currentTheme) {
+            ThemeHelper.setTheme(MainActivity.this, currentTheme);
+            ThemeUtils.refreshUI(MainActivity.this, new ThemeUtils.ExtraRefreshable() {
+                        @Override
+                        public void refreshGlobal(Activity activity) {
+                            //for global setting, just do once
+                            if (Build.VERSION.SDK_INT >= 21) {
+                                final MainActivity context = MainActivity.this;
+                                ActivityManager.TaskDescription taskDescription = new ActivityManager.TaskDescription(null, null, ThemeUtils.getThemeAttrColor(context, android.R.attr.colorPrimary));
+                                setTaskDescription(taskDescription);
+                                getWindow().setStatusBarColor(ThemeUtils.getColorById(context, R.color.theme_color_primary_dark));
+                            }
+                        }
+
+                        @Override
+                        public void refreshSpecificView(View view) {
+                            //TODO: will do this for each traversal
+                        }
+                    }
+            );
+        }
     }
 
     private void initFragment() {

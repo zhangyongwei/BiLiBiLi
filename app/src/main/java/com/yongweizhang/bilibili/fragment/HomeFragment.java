@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.wyt.searchbox.SearchFragment;
 import com.wyt.searchbox.custom.IOnSearchClickListener;
 import com.yongweizhang.bilibili.R;
+import com.yongweizhang.bilibili.activity.BluetoothActivity;
 import com.yongweizhang.bilibili.activity.DownloadActivity;
 import com.yongweizhang.bilibili.activity.SouSuoActivity;
 import com.yongweizhang.bilibili.adapter.HomeViewPagerAdapter;
@@ -112,7 +113,10 @@ public class HomeFragment extends BaseFragment {
 
                 break;
             case R.id.iv_game:
-                Toast.makeText(getActivity(), "游戏", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "游戏", Toast.LENGTH_SHORT).show();
+
+                intent = new Intent(mContext, BluetoothActivity.class);
+                startActivity(intent);
 
                 break;
             case R.id.iv_download:

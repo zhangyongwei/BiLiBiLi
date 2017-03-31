@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                     convertView.setTag(viewHolder);
 
 
-
                     viewHolder.tv_main = (TextView) convertView.findViewById(R.id.tv_main);
                 } else {
 
